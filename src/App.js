@@ -1,42 +1,48 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import './App.css';
-import CharacterList from './ListPage.js';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import ListPage from './ListPage.js';
 import PokeList from './PokeList.js';
+import MyLittlePokes from './MyLittlePokes.js';
 
 export default class PokeStatus extends Component {
 
 
-  state = {
-
-    selected: '',
-  }
-
-  selectPoke = (e) => {
-    this.setState({ selected: e.target.value });
-  }
-
-
   render() {
 
-    <div>
-      <h1>Yes, that's right, it's Pokemon...again...</h1>
-      <Header />
-    </div>
     return (
+      <div>
+        <Router>
+          <Header name="Ray" />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={(routerProps) => <ListPage {...routerProps} />}
+            />
+            <Route
+              path="/"
+              exact
+              render={(routerProps) => <fetchPokemon {...routerProps} />}
+            />
+            <Route
+              path="/"
+              exact
+              render={(routerProps) => <PokeList {...routerProps} />}
+            />
+          </Switch>
+          <footer />
 
-      <CharacterList
-        selected={this.state.selected}
-        selectPoke={this.selectPoke}
-      />
-      <PokeList
-      filter={this.state.filter}
-      value={this.state.value}
-      handleChange={this.handleChange}
-      />
 
 
+        </Router>
 
+      </div>
     )
   }
 }

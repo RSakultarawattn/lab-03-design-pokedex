@@ -1,28 +1,40 @@
 import React, { Component } from 'react'
 import Pokes from './data.js';
+import MyLittlePokes from './MyLittlePokes';
 
 export default class PokeList extends Component {
 
-    state = {
-        filter: '',
-        value: ''
-    }
 
-    handleChange = (e) => {
-        this.setState({ value: e.target.value })
-        console.log(this.state.value);
-    }
 
 
     render() {
-        const filteredPoke = this.props.poke.filter((Pokes) => {
-            if (!this.props.filter) {
-                return true;
-            } if (this.state.name === this.props.filter) {
-                return true;
-            } if (this.state.type === this.props.filter) {
-                return true;
-            } else {
-                return false
-            }
+
+        const filteredPokes = this.props.pokes.filter((poke) => {
+
+            if (!this.props.filter) return true;
+
+            if (poke.pokemon === this.props.filter) return true;
+
+            return false
         });
+
+
+        return (
+            <>
+
+                <div className="pokes">
+                    {
+                        filteredPokes.map(poke =>
+                            <MyLittlePokes
+                                caption={poke.title}
+                                color={poke.background}
+                                pokemon={poke.pokemon}
+                            />)
+
+
+                    }
+                </div>
+            </>
+        )
+    }
+}

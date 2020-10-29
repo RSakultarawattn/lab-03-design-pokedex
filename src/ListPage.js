@@ -1,13 +1,36 @@
 import React, { Component } from 'react'
+import pokes from './data.js';
+import PokeList from './PokeList.js';
 
-export default class CharacterList extends Component {
+export default class ListPage extends React.Component {
+
+    state = {
+
+        filter: ''
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            filter: e.target.value
+        });
+    }
+
+
+
+
+
+
     render() {
         return (
-            <>
-                <input onChange={this.props.selectPoke} />
-            You have chosen: {this.props.selected}
 
-            </>
-        )
+            <div className="griddy">
+                <PokeList pokes={pokes} filter={this.state.filter} />
+
+
+
+
+            </div>
+
+        );
     }
 }
