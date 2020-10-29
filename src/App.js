@@ -13,7 +13,7 @@ export default class PokeStatus extends Component {
   }
 
   selectPoke = (e) => {
-    this.setState({ selected: e.target.value })
+    this.setState({ selected: e.target.value });
   }
 
 
