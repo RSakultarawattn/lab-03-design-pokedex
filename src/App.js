@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import ListPage from './ListPage.js';
 import PokeList from './PokeList.js';
-import MyLittlePokes from './MyLittlePokes.js';
+// import Search from './Search.js';
 
 export default class PokeStatus extends Component {
 
@@ -26,15 +26,15 @@ export default class PokeStatus extends Component {
               render={(routerProps) => <ListPage {...routerProps} />}
             />
             <Route
-              path="/"
+              path="/fetch"
               exact
               render={(routerProps) => <fetchPokemon {...routerProps} />}
             />
-            <Route
-              path="/"
+            {/* <Route
+              path="/list"
               exact
               render={(routerProps) => <PokeList {...routerProps} />}
-            />
+            /> */}
           </Switch>
           <footer />
 

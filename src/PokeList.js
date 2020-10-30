@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import Pokes from './data.js';
+import React, { Component } from 'react';
 import MyLittlePokes from './MyLittlePokes';
 
 export default class PokeList extends Component {
@@ -18,17 +17,19 @@ export default class PokeList extends Component {
             return false
         });
 
-
+        console.log(this.props.pokes)
         return (
             <>
 
                 <div className="pokes">
                     {
-                        filteredPokes.map(poke =>
+                        filteredPokes.map((poke, i) =>
                             <MyLittlePokes
+                                key={i}
                                 caption={poke.title}
                                 color={poke.background}
                                 pokemon={poke.pokemon}
+                                image={poke.url_image}
                             />)
 
 

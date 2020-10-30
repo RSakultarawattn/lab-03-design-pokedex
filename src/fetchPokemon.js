@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import fetch from 'superagent';
+import MyLittlePokes from './MyLittlePokes';
 
 export default class fetchPokemon extends Component {
 
@@ -43,8 +44,15 @@ export default class fetchPokemon extends Component {
                 {
                     this.state.pokemon.length === 0
                         ? 'loading!!!'
-                        : this.state.pokemonResults.map(pokemon => <div> key={pokemon.pokemon}</div>
-                        )
+                        : this.state.pokemonResults.map(poke =>
+                            <MyLittlePokes
+                                caption={poke.title}
+                                color={poke.background}
+                                pokemon={poke.pokemon}
+                                image={poke.url_image}
+                            />)
+
+
                 }
 
             </div>

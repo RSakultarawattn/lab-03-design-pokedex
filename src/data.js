@@ -1,4 +1,4 @@
-export default [
+const pokes = [
     {
         '_id': '5cef3501ef6005a77cd4fd17',
         'pokemon': 'bulbasaur',
@@ -463,4 +463,4 @@ export default [
     }
 ]
 
-
+export default pokes;
