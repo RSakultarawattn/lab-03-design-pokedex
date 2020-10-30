@@ -24,6 +24,28 @@
   color: white;
 }
 
+.header {
+  background-color: coral;
+  font-size: 2em;
+  font-family: cursive;
+  text-align: center;
+  font-weight: bold;
+}
+
+.pokes {
+  background-color: coral;
+  text-align: center;
+  font-size: 1.8em;
+  color: blue;
+  font-family: papyrus;
+  text-shadow: black 2px 2px;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 300px;
+  
+
+}
+
 .App-link {
   color: #61dafb;
 }

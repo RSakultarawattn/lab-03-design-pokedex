@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import fetch from 'superagent';
 import MyLittlePokes from './MyLittlePokes';
 
-export default class fetchPokemon extends Component {
+export default class FetchPokemon extends Component {
 
     state = {
 
@@ -12,13 +12,13 @@ export default class fetchPokemon extends Component {
     }
 
     componentDidMount = async () => {
-        await this.fetchPokemon();
+        await this.FetchPokemon();
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
 
-        await this.fetchPokemon();
+        await this.FetchPokemon();
     }
 
     handleChange = (e) => {

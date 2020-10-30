@@ -7,7 +7,8 @@ import {
   Switch,
 } from 'react-router-dom';
 import ListPage from './ListPage.js';
-import PokeList from './PokeList.js';
+import FetchPokemon from './FetchPokemon';
+//import PokeList from './PokeList.js';
 // import Search from './Search.js';
 
 export default class PokeStatus extends Component {
@@ -28,7 +29,7 @@ export default class PokeStatus extends Component {
             <Route
               path="/fetch"
               exact
-              render={(routerProps) => <fetchPokemon {...routerProps} />}
+              render={(routerProps) => <FetchPokemon {...routerProps} />}
             />
             {/* <Route
               path="/list"
