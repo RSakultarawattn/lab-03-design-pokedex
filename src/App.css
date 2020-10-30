@@ -24,26 +24,59 @@
   color: white;
 }
 
+
+
 .header {
-  background-color: coral;
+  
   font-size: 2em;
   font-family: cursive;
   text-align: center;
   font-weight: bold;
+  border: cadetblue;
+  border-style: solid;
+  border-radius: 15px;
+  background-image: url("/src/pokeworld.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  
 }
 
+.intro {
+
+  font-size: 3em;
+  font-family: papyrus;
+  font-weight: 2000;
+  text-shadow: black 3px 3px;
+  color: blue;
+
+}
+
+
+
+ul {
+  list-style-type: none;
+  
+}
 .pokes {
-  background-color: coral;
+  
   text-align: center;
-  font-size: 1.8em;
+  font-size: 1.5em;
   color: blue;
   font-family: papyrus;
   text-shadow: black 2px 2px;
   font-weight: bold;
   border-style: solid;
-  border-width: 300px;
-  
+  border-width: 20px;
+  padding: 0%;
+  background-image: url("/src/forest.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 
+}
+.fetch {
+
+  text-align: center;
+  background-color: blue;
 }
 
 .App-link {
