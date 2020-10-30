@@ -6,57 +6,56 @@ export default class FetchPokemon extends Component {
 
     state = {
 
+
         pokemonResults: [],
         searchInput: 'squirtle'
 
     }
 
     componentDidMount = async () => {
-        await this.FetchPokemon();
+        await this.fetchPokemon();
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
 
-        await this.FetchPokemon();
+        await this.fetchPokemon();
     }
 
     handleChange = (e) => {
-        this.setState({ pokemon: e.target.value });
+        this.setState({ searchInput: e.target.value });
 
     }
 
     fetchPokemon = async () => {
-        const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex${this.state.pokemon}`);
+        const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchInput}`);
 
 
-        this.setState({ pokemonResults: response.body });
+        this.setState({ pokemonResults: response.body.results });
     }
 
     render() {
+        console.log(this.state.pokemonResults)
         return (
-
-            <div className="fetch">
-                <form onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange} />
-                    <button>Search by Pokemon</button>
-                </form>
-                {
-                    this.state.pokemon.length === 0
-                        ? 'loading!!!'
-                        : this.state.pokemonResults.map(poke =>
-                            <MyLittlePokes
-                                caption={poke.title}
-                                color={poke.background}
-                                pokemon={poke.pokemon}
-                                image={poke.url_image}
-                            />)
-
-
-                }
-
-            </div>
-
+            <>
+                <div className="fetch">
+                    <form onSubmit={this.handleSubmit}>
+                        <input onChange={this.handleChange} />
+                        <button>Search</button>
+                    </form>
+                    {
+                        this.state.pokemonResults.length === 0
+                            ? 'loading!!!'
+                            : this.state.pokemonResults.map(poke =>
+                                <MyLittlePokes
+                                    caption={poke.title}
+                                    color={poke.background}
+                                    pokemon={poke.pokemon}
+                                    image={poke.url_image}
+                                />)
+                    }
+                </div>
+            </>
         )
     }
 }
