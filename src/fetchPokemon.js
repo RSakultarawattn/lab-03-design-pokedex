@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import fetch from 'superagent';
 import MyLittlePokes from './MyLittlePokes';
 
+
+
+
 export default class FetchPokemon extends Component {
 
     state = {
 
 
         pokemonResults: [],
-        searchInput: 'squirtle'
+        searchInput: 'venusaur'
 
     }
 
@@ -40,7 +43,7 @@ export default class FetchPokemon extends Component {
             <>
                 <div className="fetch">
                     <form onSubmit={this.handleSubmit}>
-                        <input onChange={this.handleChange} />
+                        <input onChange={this.handleChange} placeholder="enter pokemon name" />
                         <button>Search</button>
                     </form>
                     {
