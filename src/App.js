@@ -7,7 +7,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import ListPage from './ListPage.js';
-import FetchPokemon from './FetchPokemon';
+import FetchPokemon from './fetchPokemon';
 //import PokeList from './PokeList.js';
 // import Search from './Search.js';
 
