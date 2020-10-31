@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import fetch from 'superagent';
 import MyLittlePokes from './MyLittlePokes';
-
+import { Link } from 'react-router-dom';
+import DropDown from './DropDown.js';
 
 
 
@@ -9,9 +10,9 @@ export default class FetchPokemon extends Component {
 
     state = {
 
-
         pokemonResults: [],
-        searchInput: 'venusaur'
+        searchInput: 'venusaur',
+        loading: false
 
     }
 
@@ -38,27 +39,33 @@ export default class FetchPokemon extends Component {
     }
 
     render() {
-        console.log(this.state.pokemonResults)
+
         return (
-            <>
-                <div className="fetch">
-                    <form onSubmit={this.handleSubmit}>
-                        <input onChange={this.handleChange} placeholder="enter pokemon name" />
-                        <button>Search</button>
-                    </form>
-                    {
-                        this.state.pokemonResults.length === 0
-                            ? 'loading!!!'
-                            : this.state.pokemonResults.map(poke =>
+
+            <div className="fetch">
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChange} placeholder="enter pokemon name" />
+                    <button>Search</button>
+                    <DropDown handleChange={this.handleChange} />
+                </form>
+                {
+                    this.state.loading
+                        ? 'loading!!!'
+
+                        : this.state.pokemonResults.map(poke =>
+
+                            <Link to={`/pokemonResults/${poke._id}`}>
                                 <MyLittlePokes
                                     caption={poke.title}
                                     color={poke.background}
                                     pokemon={poke.pokemon}
                                     image={poke.url_image}
                                 />)
-                    }
-                </div>
-            </>
+                            </Link>)
+
+                }
+            </div>
+
         )
     }
 }

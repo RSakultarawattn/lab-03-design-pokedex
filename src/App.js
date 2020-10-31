@@ -7,9 +7,9 @@ import {
   Switch,
 } from 'react-router-dom';
 import ListPage from './ListPage.js';
-import FetchPokemon from './fetchPokemon';
-//import PokeList from './PokeList.js';
-// import Search from './Search.js';
+import FetchPokemon from './fetchPokemon.js';
+import DetailPage from './DetailPage.js'
+import PaginationPage from './PaginationPage.js';
 
 export default class PokeStatus extends Component {
 
@@ -31,10 +31,15 @@ export default class PokeStatus extends Component {
               exact
               render={(routerProps) => <FetchPokemon {...routerProps} />}
             />
-            {/* <Route
-              path="/list"
+            <Route
+              path="/pokes/:pokemonName"
               exact
-              render={(routerProps) => <PokeList {...routerProps} />}
+              render={(routerProps) => <DetailPage {...routerProps} />}
+            />
+            {/* <Route
+              path="/pagination"
+              exact
+              render={(routerProps) => <PaginationPage {...routerProps} />}
             /> */}
           </Switch>
           <footer />
