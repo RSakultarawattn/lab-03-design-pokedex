@@ -32,15 +32,15 @@ export default class PokeStatus extends Component {
               render={(routerProps) => <FetchPokemon {...routerProps} />}
             />
             <Route
-              path="/pokes/:pokemonName"
+              path="/pokemonResults/:pokemonName"
               exact
               render={(routerProps) => <DetailPage {...routerProps} />}
             />
-            {/* <Route
+            <Route
               path="/pagination"
               exact
               render={(routerProps) => <PaginationPage {...routerProps} />}
-            /> */}
+            />
           </Switch>
           <footer />
 

@@ -1,110 +1,88 @@
-// import React, { Component } from 'react'
-// import fetch from 'superagent';
-
-// export default class PaginationPage extends Component {
-
-//     state = {
+import React, { Component } from 'react'
+import fetch from 'superagent';
 
 
-//         pokemonResults: [],
-//         searchInput: 'venusaur',
-//         loading: false,
-//         pageNumber: 1
+export default class PaginationPage extends Component {
 
-//     }
-
-//     componentDidMount = async () => {
-//         await this.fetchPokemon();
-//     }
-
-//     handleSubmit = async (e) => {
-//         e.preventDefault();
-
-//         await this.fetchPokemon();
-//     }
-
-//     handleChange = (e) => {
-//         this.setState({ searchInput: e.target.value });
-
-//     }
-
-//     handleIncrement = async () => {
-//         await this.setState({
-//             pageNumber: this.state.pageNumber + 1,
-//         })
-
-//         await this.fetchPokemon();
-//     }
-
-//     handleDecrement = async () => {
-//         await this.setState({
-//             pageNumber: this.state.pageNumber - 1,
-//         })
-//         await this.fetchPokemon();
-//     }
-
-//     fetchPokemon = async () => {
-//         this.setState({ loading: true })
-//         const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?page=${this.state.pageNumber}&perPage=20`);
+    state = {
 
 
-//         this.setState({
-//             pokemonResults: response.body.results,
-//             loading: false,
-//             count: response.body.count
-//         });
-//     }
+        pokemonResults: [],
+        //searchInput: '',
+        loading: false,
+        pageNumber: 1
 
-//     render() {
+    }
 
-//         return (
+    handleIncrement = async () => {
+        this.setState({
+            pageNumber: this.state.pageNumber + 1,
+        })
 
-//             <div className="fetch">
-//                 <form onSubmit={this.handleSubmit}>
-//                     <input onChange={this.handleChange} placeholder="enter pokemon name" />
-//                     <button>Search</button>
-//                 </form>
-//                 <div>
-//                     Page {this.state.pageNumber} out of {Math.ceil(this.state.count / 20)}
-//                 </div>
-//                 <div>
-//                     {this.state.count} total pokemon in query
-//                     </div>
-//                 {
-//                     <button
-//                         disabled={this.state.pageNumber === 1}
-//                         onClick={this.handleDecrement}>
-//                         Prev
-//                         </button>
-//                 }
-//                 {
-//                     <button
-//                         onClick={this.handleIncrement}
-//                         disabled={this.state.pageNumber === Math.ceil(this.state.count / 20)}>
-//                         Next
-//                         </button>
-//                 }
-//                 <div className="poke">
-//                     {
-//                         this.state.loading
-//                             ? 'loading!!!'
+        await this.fetchPokemon();
+    }
+
+    handleDecrement = async () => {
+        this.setState({
+            pageNumber: this.state.pageNumber - 1,
+        })
+        await this.fetchPokemon();
+    }
+
+    fetchPokemon = async () => {
+        this.setState({ loading: true })
+        const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?page=${this.state.pageNumber}&perPage=23`);
 
 
-//                                 ? 'loading!!!'
+        this.setState({
+            pokemonResults: response.body.results,
+            loading: false,
+            count: response.body.count
+        });
+    }
 
-//                                 : this.state.pokemonResults.map(poke =>
-//                                     <div key={poke.pokemon}>
-//                                         <p>{poke.pokemon}</p>
-//                                         <img src={poke.url_image} alt={poke.pokemon} width="100" height="100" />
-//                                         <p>{poke.type_1}</p>
-//                                     </div>
-//                                 )
+    render() {
 
+        return (
 
-//                 </div>
+            <div className="fetch">
 
-//             </div>
+                <div className="pages">
+                    Page {this.state.pageNumber} out of {Math.ceil(this.state.count / 23)}
+                </div>
+                <div className="query">
+                    {this.state.count} Total Pokemon in Query
+                    </div>
+                {
+                    <button
+                        disabled={this.state.pageNumber === 1}
+                        onClick={this.handleDecrement}>
+                        Prev
+                        </button>
+                }
+                {
+                    <button
+                        onClick={this.handleIncrement}
+                        disabled={this.state.pageNumber === Math.ceil(this.state.count / 23)}>
+                        Next
+                        </button>
+                }
+                <div>
+                    {
+                        this.state.loading
+                            ? 'loading!!!'
 
-//         )
-//     }
-// }
+                            : this.state.pokemonResults.map(pokemonResults =>
+                                <div className="page-pokes" key={pokemonResults.pokemonResults}>
+                                    <p>{pokemonResults.pokemonResults}</p>
+                                    <img src={pokemonResults.url_image} alt={pokemonResults.pokemonResults} width="200" height="300" />
+                                    <p>{pokemonResults.pokemon}</p>
+                                </div>
+                            )}
+                </div>
+
+            </div>
+
+        )
+    }
+}
