@@ -3,6 +3,7 @@ import fetch from 'superagent';
 import MyLittlePokes from './MyLittlePokes';
 import { Link } from 'react-router-dom';
 import DropDown from './DropDown.js';
+import DetailPage from './DetailPage.js';
 
 
 
@@ -11,8 +12,9 @@ export default class FetchPokemon extends Component {
     state = {
 
         pokemonResults: [],
-        searchInput: 'venusaur',
-        loading: false
+        searchInput: '',
+        loading: false,
+        DropDown: ''
 
     }
 
@@ -54,7 +56,7 @@ export default class FetchPokemon extends Component {
 
                         : this.state.pokemonResults.map(poke =>
 
-                            <Link to={`/pokemonResults/${poke._id}`}>
+                            <Link to={`/DetailPage/${poke._id}`}>
                                 <MyLittlePokes
                                     caption={poke.title}
                                     color={poke.background}
