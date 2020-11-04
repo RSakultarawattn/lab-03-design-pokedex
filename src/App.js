@@ -32,7 +32,7 @@ export default class PokeStatus extends Component {
               render={(routerProps) => <FetchPokemon {...routerProps} />}
             />
             <Route
-              path="/pokemonResults/:pokemonName"
+              path="/DetailPage/:pokemonName"
               exact
               render={(routerProps) => <DetailPage {...routerProps} />}
             />
