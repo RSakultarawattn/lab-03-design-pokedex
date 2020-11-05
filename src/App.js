@@ -42,7 +42,6 @@ export default class PokeStatus extends Component {
               render={(routerProps) => <PaginationPage {...routerProps} />}
             />
           </Switch>
-          <footer />
 
 
 

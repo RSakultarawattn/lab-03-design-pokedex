@@ -3,7 +3,7 @@ import fetch from 'superagent';
 import MyLittlePokes from './MyLittlePokes';
 import { Link } from 'react-router-dom';
 import DropDown from './DropDown.js';
-import DetailPage from './DetailPage.js';
+
 
 
 
