@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MyLittlePokes from './MyLittlePokes.js';
+
 import fetch from 'superagent';
 
 export default class DetailPage extends Component {
