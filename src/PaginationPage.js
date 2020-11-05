@@ -8,7 +8,7 @@ export default class PaginationPage extends Component {
 
 
         pokemonResults: [],
-        //searchInput: '',
+        
         loading: false,
         pageNumber: 1
 
